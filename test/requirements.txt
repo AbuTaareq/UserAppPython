@@ -1,0 +1,29 @@
+
+# REST API development
+fastapi
+
+# Postgres client, psycopg works when you run local but docker fails
+# changed to binary after research
+psycopg
+psycopg-binary
+
+# handling web requests
+requests
+
+# hosting REST API
+uvicorn
+
+# Encryption
+bcrypt
+
+pydantic
+pydantic-settings
+
+# JSON Web Tocken for security
+pyjwt
+
+# I am not using pytest but I will keep it for now
+pytest
+
+# .env file management
+python-dotenv

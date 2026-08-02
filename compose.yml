@@ -1,0 +1,100 @@
+services:
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+  db:
+    image: db:latest
+    build: ./db
+    container_name: db
+    restart: always
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: pass123
+      POSTGRES_DB: user_project
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  # the backend image must be built before running the docker-compose command
+  backend:
+    build:
+      context: ./backend
+    image: backend:latest
+    container_name: backend
+    # if it breaks, do not restart as we develop now
+    # restart: always
+    depends_on:
+      - db
+      - mailhog
+
+    # expose port 8000, so we can access the API from our local machine
+    # this restricts access to the API to localhost only
+    ports:
+      - "8000:8000"
+
+    # environment variables
+    environment:
+      DATABASE_URL: postgresql://app_user:pass123@db:5432/user_project
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+
+    # mount the backend folder to the container; any changes to the project folder backend
+    # helps with live reload, live code update and debugging.
+    # remove this in production
+    volumes:
+       - ./backend:/backend
+
+    # 1. make uvicorn reload on file changes, so live editing works
+    # 2. you do not need to restart the container to see changes
+    # 3. you also do not need to build the image again
+    # 4. remove this in production
+    command:
+      uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+  # test API
+  test:
+    build:
+      context: ./test # only the test folder is copied to the image
+    image: test:latest
+    container_name: test
+    restart: always
+    depends_on:
+      - backend
+
+    # environment variables
+    environment:
+      API_URL: http://backend:8000
+      DATABASE_URL: postgresql://app_user:pass123@db:5432/user_project
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+
+
+    stdin_open: true # keeps STDIN open, so we can attach to our container's process'
+    tty: true # allocate a pseudo-TTY (Teletype) to the container so we can attach to it
+
+    # mount the test folder to the container, any changes to the project folder test
+    # folder will be reflected in the container, this fascinating.
+    volumes:
+       - ./test:/test
+
+  # the frontend image must be built before running the docker-compose command
+  frontend:
+    build:
+      context: /Users/shihab/reactProjects/react-tsx
+      args:
+        - REACT_APP_API_URL=http://129.121.78.197:8000
+    image: frontend:latest
+    container_name: frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+volumes:
+  db_data:

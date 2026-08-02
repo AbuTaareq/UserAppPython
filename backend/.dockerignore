@@ -1,0 +1,28 @@
+
+# ignore cache from any folder
+**/__pycache__
+*.pyc
+
+
+# ignore git information
+.git
+
+# ignore virtual environments
+../.env
+
+# ignore node modules
+node_modules
+
+# ignore logs if any
+*.log
+
+# ignore folders
+test/
+db/
+doc/
+__pycache__/
+
+
+# Ignore build artifacts
+dist/
+build/

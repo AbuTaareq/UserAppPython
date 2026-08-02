@@ -1,0 +1,20 @@
+
+# ignore cache from any folder
+**/__pycache__
+*.pyc
+
+# ignore git information
+.git
+
+# ignore virtual environments
+.env
+
+# ignore logs if any
+*.log
+
+# ignore files
+Dockerfile
+
+# Ignore build artifacts
+dist/
+build/

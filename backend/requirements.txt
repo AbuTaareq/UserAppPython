@@ -1,0 +1,27 @@
+
+# REST API development
+fastapi
+
+# Postgres client, psycopg works when you run local but docker fails
+# changed to binary after research
+psycopg
+psycopg-binary
+asyncpg
+
+# handling web requests
+requests
+
+# hosting REST API
+uvicorn
+
+# Encryption
+bcrypt
+
+# pydantic we still need secret or vault, yet to learn
+pydantic
+pydantic-settings
+pydantic[email]
+
+# JSON Web Tocken for security
+pyjwt
+

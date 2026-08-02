@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/backend/routers/profile.py" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/01_create_tables.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/02_fn_auth_user_create.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/03_fn_auth_user_signup.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/04_fn_auth_retrieve_user_password.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/05_fn_user_token_retrieve.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/06_fn_user_password_reset.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/07_fn_user_validation.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/08_sp_lookup_user.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/20_fn_lookup_languages.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/21_fn_lookup_roles.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/22_fn_lookup_religions.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/23_fn_lookup_relation.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/29_fn_get_user_roles.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/30_fn_get_user.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/31_fn_get_user_address.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/32_fn_get_user_language.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/33_fn_get_user_education.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/34_fn_get_user_profile.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/36_fn_get_user_religion.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/37_fn_get_user_relative.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/38_fn_get_user_work_history.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/39_fn_get_user_connection.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/40_fn_update_eduction.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/41_fn_update_religion.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/42_fn_update_user.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/43_fn_update_address.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/44_fn_update_language.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/45_fn_update_relative.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/46_fn_update_work_history.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/47_fn_update_user_connection.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/48_fn_verify_connection.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/49_fn_update_user_roles.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/50_fn_delete_education.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/51_fn_delete_address.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/52_fn_delete_relative.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/53_fn_delete_work_history.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/54_fn_delete_connection.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+    <file url="file://$PROJECT_DIR$/db/60_fn_get_candidates.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
+  </component>
+</project>
