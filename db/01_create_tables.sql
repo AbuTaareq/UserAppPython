@@ -136,6 +136,7 @@ create table user_profile (
 	height float4 null,
     weight integer null,
     phone varchar(64) null,
+    is_active boolean default true,
 	created_user integer null,
 	created_date timestamp not null default current_timestamp,
 	modified_date timestamp not null default current_timestamp,
@@ -290,6 +291,15 @@ create table user_connection(
 	modified_date timestamp not null default current_timestamp,
     constraint pk_user_connection primary key (user_connection_id),
     constraint uq_user_connection unique (user_id, email)
+);
+
+drop table if exists user_agent;
+create table user_agent(
+	user_id integer not null,
+    agent_id integer not null,
+	created_date timestamp not null default current_timestamp,
+	modified_date timestamp not null default current_timestamp,
+    constraint pk_user_agent primary key (user_id, agent_id)
 );
 
 

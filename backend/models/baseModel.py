@@ -76,3 +76,4 @@ class ConnectionModel(BaseModel):
 class CandidatesDataPage(BaseModel):
 	offset: int = 0
 	limit:  int = 10
+	gender: str = 'All'

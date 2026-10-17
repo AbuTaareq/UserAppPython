@@ -4,7 +4,11 @@
 # Created:   11/01/2024
 # Last Modified: 6/2/2026
 #
+#	Notes: we use token_user: WebToken.User = Depends(WebToken.getuser) everywhere to get the
+#	user id and make sure is logged in, this information comes from the cookie when user logged
+#	in. This is a security measure	to prevent any unauthorized access.
 #
+
 
 from fastapi import APIRouter, HTTPException, Depends
 from models.database import DB

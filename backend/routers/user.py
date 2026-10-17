@@ -26,7 +26,7 @@ Endpoints:
 
 """
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from fastapi.responses import Response
 from fastapi.exceptions import HTTPException
 from datetime import datetime, UTC
@@ -73,6 +73,11 @@ async def user_create(user: UserModel):
 @router.post("/login")
 async def user_login(user: UserModel, response: Response):
 	
+	is_agent: bool = False
+	is_admin: bool = False
+	first_name: str = ""
+	last_name: str = ""
+	
 	# Perform basic validation (optional)
 	if not user.email or not user.password:
 		raise HTTPException(400, "Missing user information, try again")
@@ -82,13 +87,20 @@ async def user_login(user: UserModel, response: Response):
 	async with DB.pool.acquire() as conn:
 		try:
 			# stored procedure returns a table, so select * is ideal
-			query = "select * from fn_retrieve_user_password($1)"
+			query = "select * from fn_auth_retrieve_user_password($1)"
 			row = await conn.fetchrow(query, user.email)
 			if not row:
 				print(f'{Color.orange}User not found in the database{Color.reset}')
 				raise HTTPException(400, "User not found, try again")
 			
 			db = UserModel(**dict(row))
+			is_agent = True if row['role'].lower() == 'agent' else False
+			is_admin = True if row['role'].lower() == 'admin' else False
+			first_name = row['first_name']
+			last_name = row['last_name']
+			
+			
+			print(f'{Color.green}User found in the database{Color.reset}')
 			# create hashed password from the database password stored in the database
 			hashed_password = db.password.encode()
 			
@@ -112,6 +124,8 @@ async def user_login(user: UserModel, response: Response):
 		#
 		print(f'{Color.yellow}Creating web token and cookie{Color.reset}')
 		try:
+			# here is the place where we can add more information to the jwt token
+			# make sure to change UserModel if you add more fields
 			token_user = WebToken.User(id=db.id, email=db.email)
 			web_token = WebToken.generate(token_user)
 		except Exception as e:
@@ -132,7 +146,14 @@ async def user_login(user: UserModel, response: Response):
 		)
 		print(f'{Color.lightGreen}Cookie created successfully{Color.reset}')
 	
-	return {'success': True, 'message': 'User login successfully'}
+	return {
+		'success': True,
+		'agent': is_agent,
+		'admin': is_admin,
+		'first_name': first_name,
+		'last_name': last_name,
+		'message': 'User login successfully'
+	}
 
 
 # ================================================================

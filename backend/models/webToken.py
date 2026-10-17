@@ -13,6 +13,8 @@ import jwt
 
 class WebToken:
 
+    # this User class is saved in the cookie.
+    # if you want to carry more variables, then add them to the class.
     class User(BaseModel):
         id: int
         email: str
@@ -80,7 +82,7 @@ class WebToken:
         # which will convert every column value to the correct type.
         user = WebToken.User(
             id=payload.get("id"),
-            email=payload.get("email")
+            email=payload.get("email"),
         )
 
         # validation of the user in the database

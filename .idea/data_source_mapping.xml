@@ -39,6 +39,5 @@
     <file url="file://$PROJECT_DIR$/db/52_fn_delete_relative.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
     <file url="file://$PROJECT_DIR$/db/53_fn_delete_work_history.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
     <file url="file://$PROJECT_DIR$/db/54_fn_delete_connection.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
-    <file url="file://$PROJECT_DIR$/db/60_fn_get_candidates.sql" value="4df31b5b-1310-4cdd-ac6d-8b9c2352dd3a" />
   </component>
 </project>
