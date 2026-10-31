@@ -137,6 +137,7 @@ create table user_profile (
     weight integer null,
     phone varchar(64) null,
     is_active boolean default true,
+    is_deleted boolean default false,
 	created_user integer null,
 	created_date timestamp not null default current_timestamp,
 	modified_date timestamp not null default current_timestamp,
@@ -145,7 +146,6 @@ create table user_profile (
     constraint uq_user_profile_screen unique (screen_name),
     constraint uq_user_profile_phone unique (phone)
 );
-
 
 -- signup table before creating profile and this is temporary
 drop table if exists user_signup;
@@ -173,11 +173,16 @@ create table user_address(
     country varchar(128) not null,
 	from_month integer not null,
 	from_year integer not null,
+	is_current boolean default false,
 	created_date timestamp not null default current_timestamp,
 	modified_date timestamp not null default current_timestamp,
     constraint pk_user_address primary key (address_id),
 	constraint uq_user_address unique (user_id, from_month, from_year)
 );
+
+-- enforce a user must have only one primary address
+create unique index uq_user_address_current on user_address(user_id) where is_current = true;
+
 
 -- one user can have one or many religions
 drop table if exists user_religion;

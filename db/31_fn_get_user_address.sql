@@ -3,7 +3,7 @@
 	File Name: 31_fn_get_user_address.sql
 	Author: Shihab Hassan
 	Created Date: 4/30/2026
-	Last Modified: 5/18/2026
+	Last Modified: 10/28/2026
 
 */
 drop function if exists fn_get_user_address(integer);
@@ -17,7 +17,8 @@ returns table (
     zip_code    varchar,
     country     varchar,
     from_month  integer,
-    from_year   integer
+    from_year   integer,
+    is_current  boolean
 )
 as $$
 begin
@@ -30,7 +31,8 @@ begin
          a.zip_code     as zip_code,
          a.country      as country,
          a.from_month   as from_month,
-         a.from_year    as from_year
+         a.from_year    as from_year,
+         a.is_current   as is_primary
     from user_master u
     left join user_address a on a.user_id = u.user_id
     where u.user_id = in_user_id

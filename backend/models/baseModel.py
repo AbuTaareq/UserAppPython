@@ -15,6 +15,7 @@ class UserModel(BaseModel):
 	id: int = None
 	password: str = None
 	otp: str = None
+	is_agent: bool = False
 	
 class UserInfoModel(BaseModel):
 	first_name:     str     | None
@@ -36,6 +37,7 @@ class AddressModel(BaseModel):
 	country:    str | None
 	from_month: int | None
 	from_year:  int | None
+	is_current: bool | None = False
 
 class EducationModel(BaseModel):
 	completed_year: int | None

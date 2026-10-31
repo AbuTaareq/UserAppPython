@@ -49,6 +49,10 @@ router = APIRouter()
 # ============================================
 @router.post("/create")
 async def user_create(user: UserModel):
+	
+	print(f'{Color.yellow}Creating user: {Color.lightGreen}{user.email} - {user.is_agent}{Color.reset}')
+	
+	
 	# login and password cannot be empty
 	if not user.email or not user.password:
 		raise HTTPException(status_code=400, detail="Login information not provided")
@@ -58,8 +62,8 @@ async def user_create(user: UserModel):
 	
 	async with DB.pool.acquire() as conn:
 		try:
-			query = "select fn_user_create($1, $2)"
-			await conn.execute(query, user.email, hashed_password)
+			query = "select fn_auth_user_create($1, $2, $3)"
+			await conn.execute(query, user.email, hashed_password, user.is_agent)
 		except HTTPException:
 			raise
 		except Exception as e:

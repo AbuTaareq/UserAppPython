@@ -1,9 +1,13 @@
-# ===================================================
+# =================================================================================================
 #  File: 	 data.py
 #  Author:	 Shihab
 #  Created:  6/10/26
-#  Modified: 6/29/26
-# ===================================================
+#  Modified: 10/31/26
+# =================================================================================================
+#  Description:
+#	1. Candidates must be active and not deleted
+#	2. Candidates cannot be admin or agents, means they do not have a role
+# =================================================================================================
 
 from fastapi import APIRouter
 from fastapi.exceptions import HTTPException
@@ -36,13 +40,15 @@ async def candidates(page: CandidatesDataPage):
 					 ,up.last_name	as agent_last_name
 					 ,(count(*) over())::int  as total_count
 				from user_profile p
-				left join user_address a on a.user_id = p.user_id
+				left join user_address a on a.user_id = p.user_id and a.is_current = true
 				left join user_role r on r.user_id = p.user_id
 				left join role_master rm on rm.role_id = r.role_id
 					 and rm.role_name in ('Bride', 'Groom')
 				left join user_agent ua on ua.user_id = p.user_id
 				left join user_profile up on up.user_id = ua.agent_id
 				where p.is_active = true
+					and p.is_deleted = false
+					and r.role_id is null
 			"""
 			
 			# build the where clause
@@ -54,7 +60,6 @@ async def candidates(page: CandidatesDataPage):
 			
 			query += f" order by p.first_name limit ${len(params) + 1} offset ${len(params) + 2}"
 			params.extend([page.limit, page.offset])
-			
 			rows = await conn.fetch(query, *params)
 			return [dict(row) for row in rows]
 		except HTTPException:
